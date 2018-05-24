@@ -1,4 +1,5 @@
-let trainedNet;
+let net = new brain.NeuralNetwork();
+let r,g,b;
 const trainingData = [
 
   {
@@ -18,17 +19,15 @@ const trainingData = [
 
 
 function train(data) {
-  let net = new brain.NeuralNetwork();
   net.train(trainingData);
-  trainedNet = net.toFunction();
 }
 
 function execute(input) {
   console.log(input);
-  let results = trainedNet(input);
+  let results = net.run(input);
   return results;
 }
 
 train(trainingData);
-let output = execute({ r: 0, g: 0.4, b: 0 });
+let output = execute({ r: 0.3, g: 0.4, b: 0 });
 console.log(output)
